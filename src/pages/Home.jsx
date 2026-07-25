@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
 
-      <div className="relative min-h-screen overflow-hidden border-b-8 border-gray-800">
+      <div className="relative min-h-screen overflow-hidden">
 
         <img
           src={home}
@@ -62,6 +62,36 @@ const Home = () => {
 
         </div>
 
+      </div>
+
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+      <svg
+        viewBox="0 0 1450 120"
+        className="w-full h-24"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="curveBg" x1="0%" y1="10%" x2="100%" y2="10%">
+            <stop offset="0%" stopColor="#010307" />
+            <stop offset="50%" stopColor="#0f2350" />
+            <stop offset="100%" stopColor="#010307" />
+          </linearGradient>
+        </defs>
+
+        {/* Background Curve */}
+        <path
+          d="M0,120 C360,20 1080,20 1440,120 L1440,120 L0,120 Z"
+          fill="url(#curveBg)"
+        />
+
+        {/* Red Line */}
+        <path
+          d="M0,120 C360,20 1080,20 1440,120"
+          fill="none"
+          stroke="#e50914"
+          strokeWidth="10"
+        />
+      </svg>
       </div>
 
       <Trending />
