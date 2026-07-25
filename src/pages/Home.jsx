@@ -2,6 +2,7 @@ import React from 'react'
 import home from '../assets/home.jpg'
 import logo from '../assets/logo.png'
 import Trending from '../components/Trending'
+import MoreReasonCard from '../components/MoreReasonCard'
 
 const Home = () => {
   return (
@@ -95,6 +96,8 @@ const Home = () => {
       </div>
 
       <Trending />
+
+      <MoreReasonCard />
 
     </div>
   )
