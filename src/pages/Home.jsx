@@ -33,6 +33,19 @@ const Home = () => {
             Ready to watch? Enter your email to create or restart your membership.
           </p>
 
+          <div className="mt-6 flex items-center justify-center gap-3">
+            <input
+              className="w-[420px] rounded-md border border-gray-500 focus:bg-black/50 px-4 py-4 placeholder:text-gray-300 focus:outline-none"
+              placeholder="Enter Email"
+            />
+
+            <button
+              className="rounded-md bg-red-600 px-8 py-4 text-xl font-semibold text-white hover:bg-red-700 whitespace-nowrap"
+            >
+              Get Started &gt;
+            </button>
+          </div>
+    
         </div>
 
     </div>
