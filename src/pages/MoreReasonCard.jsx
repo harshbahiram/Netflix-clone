@@ -1,5 +1,5 @@
 import React from 'react'
-import ReasonCard from './ReasonCard';
+import ReasonCard from '../components/ReasonCard';
 import { MdOutlineTv } from "react-icons/md";
 import { FaDownload } from "react-icons/fa";
 import { PiMagicWand } from "react-icons/pi";
@@ -38,7 +38,7 @@ const MoreReasonCard = () => {
 
         <div className="max-w-7xl mx-auto px-8">
 
-            <h2 className="text-4xl font-bold mb-10">
+            <h2 className="text-3xl font-bold mb-10">
                 More reaons to join
             </h2>
 

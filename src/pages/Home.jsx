@@ -2,7 +2,10 @@ import React from 'react'
 import home from '../assets/home.jpg'
 import logo from '../assets/logo.png'
 import Trending from '../components/Trending'
-import MoreReasonCard from '../components/MoreReasonCard'
+import MoreReasonCard from './MoreReasonCard'
+import FAQ from "./FAQ"
+import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -98,6 +101,10 @@ const Home = () => {
       <Trending />
 
       <MoreReasonCard />
+
+      <FAQ />
+
+      <Footer />
 
     </div>
   )

@@ -3,7 +3,7 @@ import React from 'react'
 const ReasonCard = ({ title, description, icon: Icon }) => {
   return (
     <div className="relative rounded-3xl bg-gradient-to-b from-[#1d2148] to-[#21121f] p-6 h-80">
-      <h3 className="text-white text-3xl font-bold">
+      <h3 className="text-white text-3xl font-semibold">
         {title}
       </h3>
 
