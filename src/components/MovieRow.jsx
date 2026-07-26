@@ -63,7 +63,7 @@ const MovieRow = ({ title, fetchMovies }) => {
                 key={movie.id}
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
-                onClick={() => selectedMovie(movie)}
+                onClick={() => setSelectedMovie(movie)}
                 className="min-w-[180px] h-[270px] rounded-lg object-cover
                 cursor-pointer transition duration-300 hover:scale-110"
               />
