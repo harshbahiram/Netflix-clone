@@ -30,9 +30,11 @@ const Home = () => {
         </div>
 
         <div className="absolute top-6 right-6 md:right-12 z-20">
-          <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2 rounded-md transition">
-            Sign In
-          </button>
+          <Link to="/login">
+            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2 rounded-md transition">
+              Sign In
+            </button>
+          </Link>
         </div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
