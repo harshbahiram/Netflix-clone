@@ -32,3 +32,11 @@ export const fetchRomance = () =>
 
 export const fetchDocumentary = () =>
   tmdb.get(`/discover/movie?api_key=${API_KEY}&with_genres=99`);
+
+export const searchMovies = (query) =>
+  tmdb.get(`/search/movie`, {
+    params: {
+      api_key: API_KEY,
+      query,
+    },
+  });

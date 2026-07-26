@@ -24,7 +24,7 @@ const MovieModel = ({ movie, onClose }) => {
         <img
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           alt={movie.title}
-          className="w-full h-[280px]"
+          className="w-full h-[320px]"
         />
 
         {/* Movie Details */}

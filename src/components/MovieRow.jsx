@@ -46,7 +46,7 @@ const MovieRow = ({ title, fetchMovies }) => {
 
           <button
             onClick={scrollLeft}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-30
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-30
             w-10 h-16 flex items-center justify-center
             bg-black/70 text-white text-3xl rounded
             hover:bg-black"
@@ -72,7 +72,7 @@ const MovieRow = ({ title, fetchMovies }) => {
 
           <button
             onClick={scrollRight}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-30
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-30
             w-10 h-16 flex items-center justify-center
             bg-black/70 text-white text-3xl rounded
             hover:bg-black">
