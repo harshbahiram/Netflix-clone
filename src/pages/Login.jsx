@@ -1,7 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { auth } from "../firebase/FirebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login= () => {
+
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [error, setError] = useState("");
+
+const navigate = useNavigate();
+
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setError("");
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert("Login Successful!");
+    navigate("/");
+  } catch (err) {
+    setError(err.message);
+  }
+};
+
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
         <div className="w-full max-w-md bg-black/80 p-10 rounded-md">
@@ -10,19 +32,30 @@ const Login= () => {
                 Sign In
             </h1>
 
-            <form className="space-y-4">
+            <form onSubmit={handleLogin} className="space-y-4">
 
                 <input type="email"
                 placeholder='Email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className='w-full p-4 rounded bg-[#333] text-white outline-none' 
                 />
 
                 <input type="password"
                 placeholder='Password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className='w-full p-4 rounded bg-[#333] text-white outline-none' 
                 />
 
-                <button className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded font-semibold">
+                {error && (
+                    <p className="text-red-500 mb-3">
+                        {error}
+                    </p>
+                )}
+
+                <button type='submit'
+                className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded font-semibold">
                     Sign In
                 </button>
 
