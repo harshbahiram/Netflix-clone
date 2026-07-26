@@ -6,7 +6,7 @@ import { fetchTrending, fetchPopular, fetchTopRated, fetchAction, fetchComedy, f
 
 const Browse = () => {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-black min-h-screen overflow-x-hidden">
 
         <Navbar />
         <Banner />
@@ -22,8 +22,6 @@ const Browse = () => {
           <MovieRow title="Romance" fetchMovies={fetchRomance} />
 
         </div>
-        
-        <MovieRow />
 
     </div>
   )

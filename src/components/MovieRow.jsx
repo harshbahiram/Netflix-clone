@@ -38,7 +38,7 @@ const MovieRow = ({ title, fetchMovies }) => {
         {title}
       </h2>
 
-      <div className="relative">
+      <div className="relative overflow-hidden">
 
         <button
           onClick={scrollLeft}
