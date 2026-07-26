@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchTrending } from "../api/tmdb";
+import MovieModel from "./MovieModel";
 
 const Banner = () => {
   const [movie, setMovie] = useState(null);
+  const [showModal, setShowModel] = useState(false);
 
   useEffect(() => {
     const getBannerMovie = async () => {
@@ -39,7 +41,7 @@ const Banner = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end h-full px-12 pb-68 max-w-3xl">
+      <div className="relative z-10 flex flex-col justify-end h-full px-12 pb-28 max-w-3xl">
         <h1 className="text-white text-6xl font-bold mb-4">
           {movie.title}
         </h1>
@@ -69,12 +71,12 @@ const Banner = () => {
           </button>
 
           <button
-            
+            onClick={() => setShowModel(true)}
             className="bg-[#33333380] flex items-center shadow-2xl mb-3 text-base sm:text-xl font-semibold text-white hover:bg-white hover:text-black transition duration-500 ease-in-out py-2 px-8 rounded-md"
-            >
+          >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 items-center mr-2"
+                className="h-6 w-6 mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -86,13 +88,23 @@ const Banner = () => {
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
+
               More Info
-          </button>
+            </button>
 
         </div>
 
       </div>
+
+      {showModal && (
+        <MovieModel
+          movie={movie}
+          onClose={() => setShowModel(false)}
+        />
+      )}
+
     </header>
+
   );
 };
 
