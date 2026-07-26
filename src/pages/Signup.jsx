@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { auth } from "../firebase/FirebaseConfig"
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
@@ -10,6 +10,7 @@ const Signup = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  
 
   const handleSignup = async (e) => {
     e.preventDefault();

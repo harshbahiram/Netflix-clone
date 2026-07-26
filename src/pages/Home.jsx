@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import home from '../assets/home.jpg'
 import logo from '../assets/logo.png'
 import Trending from '../components/Trending'
 import MoreReasonCard from './MoreReasonCard'
 import FAQ from "./FAQ"
 import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Home = () => {
+
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
   return (
     <div>
 
@@ -56,9 +60,15 @@ const Home = () => {
             <input
               className="w-full max-w-md rounded-md bg-black/50 border border-gray-500 px-4 py-4 text-white placeholder:text-gray-300"
               placeholder="Enter Email"
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <button
+              onClick={() =>
+                navigate("/login", {state: {email}})
+              }
               className="rounded-md bg-red-600 px-8 py-4 text-xl font-semibold text-white hover:bg-red-700 whitespace-nowrap"
             >
               Get Started &gt;
