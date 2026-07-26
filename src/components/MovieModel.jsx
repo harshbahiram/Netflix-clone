@@ -1,7 +1,46 @@
 import React from 'react'
+import { auth, db } from "../firebase/FirebaseConfig"
+import { doc, setDoc } from "firebase/firestore"
 
 const MovieModel = ({ movie, onClose }) => {
   if (!movie) return null;
+
+  const addToFavorites = async () => {
+  console.log("Button clicked");
+
+  const user = auth.currentUser;
+  console.log("Current user:", user);
+
+  if (!user) {
+    alert("Please login first.");
+    return;
+  }
+
+  try {
+    console.log("Saving movie:", movie);
+
+    await setDoc(
+      doc(db, "users", user.uid, "favorites", movie.id.toString()),
+      {
+        id: movie.id,
+        title: movie.title,
+        poster: movie.poster_path,
+        backdrop: movie.backdrop_path,
+        rating: movie.vote_average,
+        releaseDate: movie.release_date,
+        overview: movie.overview,
+      }
+    );
+
+    console.log("Saved successfully");
+    alert("Added to Favorites ❤️");
+  } catch (error) {
+    console.error("Firestore Error:", error);
+  console.log("Error code:", error.code);
+  console.log("Error message:", error.message);
+  alert(error.message);
+  }
+};
 
   return (
     <div
@@ -24,7 +63,7 @@ const MovieModel = ({ movie, onClose }) => {
         <img
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
           alt={movie.title}
-          className="w-full h-[320px]"
+          className="w-full h-[280px]"
         />
 
         {/* Movie Details */}
@@ -54,11 +93,18 @@ const MovieModel = ({ movie, onClose }) => {
             {movie.overview}
           </p>
 
-          <button
-            className="mt-8 bg-red-600 hover:bg-red-700 px-8 py-3 rounded text-white font-semibold"
+          <div className='flex gap-6 mt-6'>
+            <button
+            className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded text-white font-semibold"
           >
-            ▶ Play
+            ▶ Play 
           </button>
+
+          <button onClick={addToFavorites}
+          className='bg-zinc-600 hover:bg-zinc-700 px-2 py-3 rounded'>
+            ❤️ Add to Favorites
+          </button>
+          </div>
 
         </div>
       </div>

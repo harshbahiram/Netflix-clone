@@ -29,13 +29,11 @@ const Banner = () => {
 
   return (
     <header
-      className="relative h-[90vh] bg-cover bg-center"
+      className="relative h-[95vh] bg-cover bg-center"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
 
       {/* Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>

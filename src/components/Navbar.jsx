@@ -131,7 +131,8 @@ const Navbar = () => {
           </div>
 
           {/* Avatar */}
-          <div className="w-10 h-10 rounded bg-red-600 flex items-center justify-center font-bold">
+          <div onClick={() => navigate("/profile")} 
+          className="w-10 h-10 rounded bg-red-600 flex items-center justify-center font-bold">
             {user?.email?.charAt(0).toUpperCase()}
           </div>
 
