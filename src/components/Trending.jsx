@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import { fetchTrending } from "../api/tmdb";
+import MovieModel from "./MovieModel";
 
 const Trending = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
   const scrollRef = useRef(null);
 
-  // Fetch trending movies
   useEffect(() => {
     const getMovies = async () => {
       try {
@@ -19,7 +21,6 @@ const Trending = () => {
     getMovies();
   }, []);
 
-  // Scroll Left
   const scrollLeft = () => {
     scrollRef.current.scrollBy({
       left: -800,
@@ -27,7 +28,6 @@ const Trending = () => {
     });
   };
 
-  // Scroll Right
   const scrollRight = () => {
     scrollRef.current.scrollBy({
       left: 800,
@@ -36,46 +36,57 @@ const Trending = () => {
   };
 
   return (
-    <section className="bg-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-8">
-        <h2 className="text-3xl font-bold mb-8">
-          Trending Now
-        </h2>
+    <>
+      <section className="bg-black text-white py-16">
+        <div className="max-w-7xl mx-auto px-8">
+          <h2 className="text-3xl font-bold mb-8">
+            Trending Now
+          </h2>
 
-        <div className="relative">
-          {/* Left Button */}
-          <button
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black text-white w-10 h-20 rounded-r-lg"
-          >
-            ❮
-          </button>
+          <div className="relative overflow-hidden">
+            {/* Left Button */}
+            <button
+              onClick={scrollLeft}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20
+              bg-black/60 hover:bg-black text-white w-10 h-20 rounded-r-lg"
+            >
+              ❮
+            </button>
 
-          {/* Movie List */}
-          <div
-            ref={scrollRef}
-            className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
-          >
-            {movies.map((movie) => (
-              <img
-                key={movie.id}
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="w-44 rounded-lg flex-shrink-0 hover:scale-105 transition duration-300 cursor-pointer"
-              />
-            ))}
+            {/* Movie List */}
+            <div
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide"
+            >
+              {movies.map((movie) => (
+                <img
+                  key={movie.id}
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  onClick={() => setSelectedMovie(movie)}
+                  className="w-44 rounded-lg flex-shrink-0 cursor-pointer
+                  hover:scale-105 transition duration-300"
+                />
+              ))}
+            </div>
+
+            {/* Right Button */}
+            <button
+              onClick={scrollRight}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20
+              bg-black/60 hover:bg-black text-white w-10 h-20 rounded-l-lg"
+            >
+              ❯
+            </button>
           </div>
-
-          {/* Right Button */}
-          <button
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-black text-white w-10 h-20 rounded-l-lg"
-          >
-            ❯
-          </button>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <MovieModel
+        movie={selectedMovie}
+        onClose={() => setSelectedMovie(null)}
+      />
+    </>
   );
 };
 
