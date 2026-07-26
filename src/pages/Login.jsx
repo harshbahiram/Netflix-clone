@@ -19,7 +19,7 @@ const handleLogin = async (e) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
     alert("Login Successful!");
-    navigate("/");
+    navigate("/browse");
   } catch (err) {
     setError(err.message);
   }
