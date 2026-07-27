@@ -2,10 +2,13 @@
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset;
-  -webkit-text-fill-color: white;
-  transition: background-color 5000s ease-in-out 0s;
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.5) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.5) inset !important;
 }
 
 /* Hide scrollbar */
@@ -18,11 +21,16 @@ input:-webkit-autofill:focus {
   scrollbar-width: none;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
 }
 
-.scrollbar-hide {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

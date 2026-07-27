@@ -58,11 +58,12 @@ const Home = () => {
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
 
             <input
-              className="w-full max-w-md rounded-md bg-black/50 border border-gray-500 px-4 py-4 text-white placeholder:text-gray-300"
+              type="email"
               placeholder="Enter Email"
-              type='email'
+              autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className="w-full max-w-md rounded-md border border-gray-500 bg-black/50 px-4 py-4 text-white focus:bg-black/50"
             />
 
             <button

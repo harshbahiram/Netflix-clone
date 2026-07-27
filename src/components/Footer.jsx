@@ -14,7 +14,7 @@ const Footer = () => {
           <a href='#' className='underline'>Jobs</a>         
           <a href='#' className='underline'>Cookie Preference</a>      
           <a href='#' className='underline'>Legal Notices</a>         
-          <a href='#' className='underline'>Account</a>         
+          <a href='/login' className='underline'>Account</a>         
           <a href='#' className='underline'>Ways to Watch</a>         
           <a href='#' className='underline'>Corporate Information</a>         
           <a href='#' className='underline'>Only on Netflix</a>         
