@@ -11,7 +11,6 @@ const request = (url, params = {}) => {
   if (!API_KEY) {
     return Promise.reject(new Error("Movie service is not configured."));
   }
-
   return tmdb.get(url, {
     params: {
       api_key: API_KEY,
@@ -49,3 +48,4 @@ export const fetchDocumentary = () =>
 
 export const searchMovies = (query) =>
   request("/search/movie", { query: query.trim() });
+
